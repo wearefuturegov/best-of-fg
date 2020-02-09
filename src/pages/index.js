@@ -1,21 +1,69 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from 'gatsby'
+import Layout from "../components/Layout"
+import PracticeSection from "../components/PracticeSection"
+import SearchBox from "../components/SearchBox"
+import TeamFilmstrip from "../components/TeamFilmstrip"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const IndexPage = ({
+  data
+}) => {
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+  let allArtefacts = data.allArtefactsYaml.edges
+
+  return(
+    <Layout>
+      <SearchBox 
+        artefacts={allArtefacts} 
+        index={data.siteSearchIndex.index}
+      />
+      <TeamFilmstrip/>
+      <PracticeSection
+        title="Service design 🙌"
+        practice="service design"
+        allArtefacts={allArtefacts}
+        />
+      <PracticeSection
+        title="Product design 🎨"
+        practice="product design"
+        allArtefacts={allArtefacts}
+        />
+      <PracticeSection
+        title="Delivery management 🗓"
+        practice="delivery management"
+        allArtefacts={allArtefacts}
+        />
+      <PracticeSection
+        title="Design research 🧪"
+        practice="design research"
+        allArtefacts={allArtefacts}
+        />
+      <PracticeSection
+        title="Consultancy and organisation design 📈"
+        practice="consultancy and organisation design"
+        allArtefacts={allArtefacts}
+        />
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query IndexQuery {
+    allArtefactsYaml {
+      edges {
+        node {
+          id
+          name
+          practice
+          url
+          tags
+        }
+      }
+    }
+    siteSearchIndex {
+      index
+    }
+  }
+`
 
 export default IndexPage

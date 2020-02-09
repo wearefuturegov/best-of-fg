@@ -6,9 +6,11 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.3.0",
+    "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.7",
     "gatsby-plugin-lunr": "^1.5.2",
     "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-yaml": "^2.2.24",
     "lunr": "^2.3.8",

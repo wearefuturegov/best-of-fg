@@ -72,21 +72,38 @@ const Results = styled.ul`
     }
 `
 
-const Headline = styled.h2`
+const HeadlineCard = styled.div`
     background: ${theme.pinkGradient};
     border-radius: 10px;
     padding: 25px;
     color: white;
     min-height: 200px;
-    font-size: 2rem;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
     grid-row: 1 / 2;
-    /* @media screen and (min-width: 700px){
-        font-size: 2.5rem;
-    } */
 `
 
+const Headline = styled.h2`
+    font-size: 2rem;
+    margin-bottom: 15px;
+`
+const Prompt = styled.p`
+    font-size: 1rem;
+    color: #feedf6;
+    a{
+        color: #feedf6;
+        &:hover{
+            text-decoration: none;
+        }
+        &:focus{
+            color: ${theme.pink};
+            outline: 3px solid ${theme.yellow};
+            background: ${theme.yellow};
+        }
+    }
+`
 
 class SearchBox extends React.Component {
     constructor(props) {
@@ -126,14 +143,19 @@ class SearchBox extends React.Component {
                     />
                     <Button><Icon src={spyglass} alt="Search"/></Button>
                 </Form>
+                <div aria-live="polite">
                 {this.state.results.length > 0 &&
                     <Results>
-                        <Headline>Showing {this.state.results.length} search results</Headline>
+                        <HeadlineCard>
+                            <Headline>Showing {this.state.results.length} search results</Headline>
+                            <Prompt>Not seeing what you need? <a href="https://wiki.wearefuturegov.com">Try the wiki</a>.</Prompt>
+                        </HeadlineCard>
                         {this.state.results.map(result => 
                             <Result key={result.id} {...result}/>
                         )}
                     </Results>
                 }
+                </div>
             </Outer>
         )
     }

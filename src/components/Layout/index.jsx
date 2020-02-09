@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${theme.background};
         @media screen and (min-width: 1200px){
             background-image: linear-gradient(90deg, rgba(229, 221, 244, 0.5) 0.17%, ${theme.background} 0.17%, ${theme.background} 50%, rgba(229, 221, 244, 0.5) 50%, rgba(229, 221, 244, 0.5) 50.17%, ${theme.background} 50.17%, ${theme.background} 100%);
-            background-size: 602.00px 602.00px;
+            background-size: 652.00px 652.00px;
             background-position: center;
         }
     }

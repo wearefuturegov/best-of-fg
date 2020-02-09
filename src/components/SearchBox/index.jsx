@@ -119,13 +119,13 @@ class SearchBox extends React.Component {
     search = e => {
         const query = e.target.value
         this.index = this.getOrCreateIndex()
+
         this.setState({
             query,
-            // Query the index with search string to get an [] of IDs
-            results: this.index
-                .search(query, {})
-                // Map over each ID and return the full document
-                .map(({ ref }) => this.index.documentStore.getDoc(ref)),
+            results: query.length > 2 ? 
+                this.index
+                    .search(query, {expand: true})
+                    .map(({ ref }) => this.index.documentStore.getDoc(ref)) : [],
         })
     }
 

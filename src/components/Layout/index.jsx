@@ -28,6 +28,7 @@ const Layout = ({
     <>
         <GlobalStyle/>
         <Helmet>
+            <title>The Best of FutureGov</title>
             <link rel="stylesheet" href="https://use.typekit.net/uru8mtl.css"/>
         </Helmet>
         <Header/>
